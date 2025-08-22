@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include "MIL1553.h"
-#include "TransportI2C.h"
+#include "TransportI2c.h"
 
 TransportI2C transport(0x08, false);
 MIL1553_RT rt(transport, 1);

@@ -1,4 +1,4 @@
-#include "TransportI2C.h"
+#include <TransportI2c.h>
 
 TransportI2C::TransportI2C(uint8_t address, bool isMaster)
   : _address(address), _isMaster(isMaster) {}

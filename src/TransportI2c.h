@@ -1,7 +1,7 @@
 #ifndef TRANSPORT_I2C_H
 #define TRANSPORT_I2C_H
 
-#include "Transport.h"
+#include <Transport.h>
 #include <Wire.h>
 
 class TransportI2C : public Transport {
