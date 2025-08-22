@@ -1,0 +1,17 @@
+#include <Wire.h>
+#include "MIL1553.h"
+#include "TransportI2C.h"
+
+TransportI2C transport(0x08, false);
+MIL1553_RT rt(transport, 1);
+
+void setup() {
+  Serial.begin(9600);
+  rt.begin();
+  Serial.println("RT listo para recibir...");
+}
+
+void loop() {
+  rt.listen();
+}
+

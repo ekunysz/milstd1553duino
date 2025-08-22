@@ -1,0 +1,22 @@
+{
+  "name": "MIL-STD-1553-Duino",
+  "keywords": "MIL-STD-1553, Protocol, RT, BC",
+  "description": "A library for implementing a MIL-STD-1553 Protocol, only Logic Layer.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/ekunysz/milstd1553duino.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Eduardo Kunysz",
+      "email": "ekunysz@epet12smandes.edu.ar",
+      "maintainer": true
+    }
+  ],
+  "version": "0.0.1",
+  "frameworks": ["arduino"],
+  "platforms": "*",
+  "headers": "MIL1553.h"
+}
