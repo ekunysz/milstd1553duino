@@ -29,6 +29,7 @@ public:
   MIL1553_BC(Transport &t) : _transport(t) {}
   void begin();
   void sendCommand(CommandWord cmd);
+  void sendData(DataWord data);
 
 private:
   Transport &_transport;

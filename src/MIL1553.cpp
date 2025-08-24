@@ -14,6 +14,12 @@ void MIL1553_BC::sendCommand(CommandWord cmd)
   _transport.sendWord(word);
 }
 
+void MIL1553_BC::sendData(DataWord data)
+{
+  uint16_t word = data.data;
+  _transport.sendWord(word);
+}
+
 void MIL1553_RT::begin()
 {
   _transport.begin();
@@ -27,7 +33,7 @@ void MIL1553_RT::listen()
     // Simulation: only print recived message
     Serial.print("RT ");
     Serial.print(_rtAddress);
-    Serial.print(" recibió comando: 0x");
+    Serial.print(" recibió: 0x");
     Serial.println(word, HEX);
   }
 }

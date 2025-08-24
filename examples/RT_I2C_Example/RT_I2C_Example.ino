@@ -8,10 +8,9 @@ MIL1553_RT rt(transport, 1);
 void setup() {
   Serial.begin(9600);
   rt.begin();
-  Serial.println("RT listo para recibir...");
+  Serial.println("RT ready...");
 }
 
 void loop() {
   rt.listen();
 }
-
