@@ -1,10 +1,12 @@
-#include "MIL1553.h"
+#include <MIL1553.h>
 
-void MIL1553_BC::begin() {
+void MIL1553_BC::begin()
+{
   _transport.begin();
 }
 
-void MIL1553_BC::sendCommand(CommandWord cmd) {
+void MIL1553_BC::sendCommand(CommandWord cmd)
+{
   uint16_t word = (cmd.rtAddress << 11) |
                   (cmd.tr << 10) |
                   (cmd.subAddress << 5) |
@@ -12,13 +14,16 @@ void MIL1553_BC::sendCommand(CommandWord cmd) {
   _transport.sendWord(word);
 }
 
-void MIL1553_RT::begin() {
+void MIL1553_RT::begin()
+{
   _transport.begin();
 }
 
-void MIL1553_RT::listen() {
+void MIL1553_RT::listen()
+{
   uint16_t word;
-  if (_transport.receiveWord(word)) {
+  if (_transport.receiveWord(word))
+  {
     // Simulation: only print recived message
     Serial.print("RT ");
     Serial.print(_rtAddress);
@@ -26,4 +31,3 @@ void MIL1553_RT::listen() {
     Serial.println(word, HEX);
   }
 }
-

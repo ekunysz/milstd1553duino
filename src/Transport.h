@@ -3,12 +3,12 @@
 
 #include <Arduino.h>
 
-class Transport {
-  public:
-    virtual void begin() = 0;
-    virtual void sendWord(uint16_t word) = 0;
-    virtual bool receiveWord(uint16_t &word) = 0;
+class Transport
+{
+public:
+  virtual void begin() = 0;
+  virtual void sendWord(uint16_t word) = 0;
+  virtual bool receiveWord(uint16_t &word) = 0;
 };
 
 #endif
-
