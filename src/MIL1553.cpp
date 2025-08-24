@@ -19,7 +19,7 @@ void MIL1553_RT::begin() {
 void MIL1553_RT::listen() {
   uint16_t word;
   if (_transport.receiveWord(word)) {
-    // Simulación: simplemente imprimir lo recibido
+    // Simulation: only print recived message
     Serial.print("RT ");
     Serial.print(_rtAddress);
     Serial.print(" recibió comando: 0x");
