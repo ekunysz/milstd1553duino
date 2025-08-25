@@ -39,6 +39,7 @@ public:
   void begin();
   void sendCommand(CommandWord cmd);
   void sendData(DataWord data);
+  bool requestData(uint16_t &word);
 
 private:
   Transport &_transport;

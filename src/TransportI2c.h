@@ -11,6 +11,8 @@ public:
   void begin();
   void sendWord(uint16_t word);
   bool receiveWord(uint16_t &word);
+  void prepareResponse(uint16_t word);
+  bool getLastWord(uint16_t &word);
 
 private:
   uint8_t _address;

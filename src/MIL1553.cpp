@@ -1,5 +1,6 @@
 #include <MIL1553.h>
 
+// ===================== BC =====================
 void MIL1553_BC::begin()
 {
   _transport.begin();
@@ -20,6 +21,13 @@ void MIL1553_BC::sendData(DataWord data)
   _transport.sendWord(word);
 }
 
+bool MIL1553_BC::requestData(uint16_t &word)
+{
+  // El BC pide datos a un RT
+  return _transport.receiveWord(word);
+}
+
+// ================== RT =====================
 void MIL1553_RT::begin()
 {
   _transport.begin();
@@ -28,7 +36,7 @@ void MIL1553_RT::begin()
 void MIL1553_RT::listen()
 {
   uint16_t word;
-  if (_transport.receiveWord(word))
+  if (_transport.getLastWord(word))
   {
     // Decode Word
     CommandWord cmd;
@@ -41,7 +49,7 @@ void MIL1553_RT::listen()
     {
       // Casa BC→RT: recive data from BC
       delay(10); // FIX this delay
-      if (_transport.receiveWord(word))
+      if (_transport.getLastWord(word))
       {
         _rxMessage.cmd = cmd;
         _rxMessage.data = word;
@@ -52,8 +60,7 @@ void MIL1553_RT::listen()
     {
       // Caso RT→BC: el BC está pidiendo datos
       uint16_t toSend = _txBuffer[cmd.subAddress];
-      //_transport.sendWord(toSend);
-      // (por ahora no guardamos nada, solo respondemos)
+      _transport.prepareResponse(toSend); // dejamos listo el dato para el requestHandler()
     }
   }
 }
