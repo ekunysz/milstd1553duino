@@ -18,6 +18,6 @@ void setup() {
 }
 
 void loop() {
-  // Podrías enviar comandos periódicos
+  // Periodic commands
   delay(2000);
 }

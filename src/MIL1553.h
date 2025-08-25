@@ -3,6 +3,8 @@
 
 #include <Transport.h>
 
+#define MAX_SUBADDR 32 // Max number of RT subaddress
+
 struct CommandWord
 {
   uint8_t rtAddress;
@@ -21,6 +23,13 @@ struct StatusWord
 struct DataWord
 {
   uint16_t data;
+};
+
+struct MIL1553_Message
+{
+  CommandWord cmd;
+  uint16_t data;      // last recived data (BC→RT)
+  bool valid = false; // availability flag
 };
 
 class MIL1553_BC
@@ -42,10 +51,17 @@ public:
       : _transport(t), _rtAddress(rtAddress) {}
   void begin();
   void listen();
+  bool hasNewMessage();
+  MIL1553_Message getMessage();
+  // Buffer for send data RT-BC
+  void setTxBuffer(uint8_t subAddr, uint16_t value);
+  uint16_t getTxBuffer(uint8_t subAddr);
 
 private:
   Transport &_transport;
   uint8_t _rtAddress;
+  MIL1553_Message _rxMessage;      // RX buffer
+  uint16_t _txBuffer[MAX_SUBADDR]; // setting for user for RT-BC
 };
 
 #endif

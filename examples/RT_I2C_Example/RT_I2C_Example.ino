@@ -13,4 +13,18 @@ void setup() {
 
 void loop() {
   rt.listen();
+
+// Case BC→RT: read sending data
+if (rt.hasNewMessage()) {
+  MIL1553_Message msg = rt.getMessage();
+  Serial.print("Received Cmd: subAddr=");
+  Serial.print(msg.cmd.subAddress);
+  Serial.print(" data=0x");
+  Serial.println(msg.data, HEX);
+
+}
+
+// Case RT→BC: update sensors buffers TODO
+//rt.setTxBuffer(1, analogRead(A0));   // ex. sensor subaddress 1
+//rt.setTxBuffer(2, analogRead(A1));   // ex. another sensor
 }
