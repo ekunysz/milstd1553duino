@@ -37,6 +37,7 @@ This is a simplified, non-physical implementation of MIL-STD-1553, intended to e
 
 Changelog
 ---------
-| Date | Version | Description                                                     |
-
+| Date | Version |                    Description                                  |
+| :----| :------:|  --------------------------------------------------------------:|
 |250824|   0.0.1 | Functional version, only implement "Command Word (CW) BC to RT" |
+|250825|   0.0.2 | Data Word implemetation                                         |
